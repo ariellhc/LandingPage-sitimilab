@@ -50,3 +50,56 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
+
+const accessModal = document.querySelector('#access-modal');
+const accessForm = document.querySelector('#access-form');
+const accessMessage = accessForm ? accessForm.querySelector('.access-message') : null;
+
+const showAccessModal = () => {
+  if (accessModal) {
+    accessModal.classList.remove('hidden');
+  }
+  document.body.classList.add('modal-open');
+  if (accessForm) {
+    const firstInput = accessForm.querySelector('#access-name');
+    if (firstInput) {
+      firstInput.focus();
+    }
+  }
+};
+
+const hideAccessModal = () => {
+  if (accessModal) {
+    accessModal.classList.add('hidden');
+  }
+  document.body.classList.remove('modal-open');
+};
+
+const unlockPage = () => {
+  hideAccessModal();
+  localStorage.setItem('pageAccessGranted', 'true');
+};
+
+if (localStorage.getItem('pageAccessGranted') === 'true') {
+  hideAccessModal();
+} else {
+  showAccessModal();
+}
+
+if (accessForm) {
+  accessForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const name = accessForm.querySelector('#access-name').value.trim();
+    const whatsapp = accessForm.querySelector('#access-whatsapp').value.trim();
+    const email = accessForm.querySelector('#access-email').value.trim();
+
+    if (!name || !whatsapp || !email) {
+      if (accessMessage) {
+        accessMessage.textContent = 'Preencha nome, telefone e e-mail para acessar a página.';
+      }
+      return;
+    }
+
+    unlockPage();
+  });
+}
