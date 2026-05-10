@@ -71,13 +71,13 @@ nav {
   gap: 0.7rem;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 30px;
   color: var(--white);
   text-decoration: none;
 }
 .nav-logo img {
-  width: 75px;
-  height: 75px;
+  width: 65px;
+  height: 65px;
   border-radius: 18px;
   object-fit: cover;
   border: 1px solid rgba(16, 32, 22, 0.08);
@@ -514,6 +514,22 @@ h1 {
   height: 60px;
 }
 /* SCROLL INDICATOR */
+@media screen and (max-width: 767px) {
+  .scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray);
+  font-size: 0.75rem;
+  animation: fadeUp 1s 0.8s ease both;
+  }
+}
+
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -526,6 +542,8 @@ h1 {
   color: var(--gray);
   font-size: 0.75rem;
   animation: fadeUp 1s 0.8s ease both;
+  margin-left: 23%;
+  margin-bottom: 100px;
 }
 .scroll-mouse {
   width: 22px;
@@ -681,6 +699,22 @@ section {
   margin-top: 0.8rem;
   line-height: 1.7;
 }
+
+.section-sub-two {
+  color: var(--gray);
+  font-size: 1rem;
+  max-width: 600px;
+  line-height: 1.7;
+  
+}
+
+.section-sub-tree {
+  color: var(--gray);
+  font-size: 1rem;
+  max-width: 1250px;
+  line-height: 1.7;
+  
+}
 /* SERVICES */
 
 .services-grid {
@@ -733,10 +767,12 @@ section {
 
   .service-card-content {
     order: unset;
+    padding: 0;
   }
 }
 
 .service-card  {
+  padding : 0;
   display: grid;
   gap: 1rem;
   background: var(--card);
@@ -975,6 +1011,54 @@ section {
   background: linear-gradient(90deg, var(--blue), var(--purple));
   z-index: 0;
 }
+
+.steps-summary {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 460px);
+  gap: 1rem;
+  justify-self: space-between;
+  margin: 0;
+
+}
+
+@media (max-width: 768px) {
+  .steps-summary {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+}
+
+.steps-copy {
+  display: grid;
+  gap: 1rem;
+}
+
+.steps-copy h2,
+.steps-copy p {
+  margin: 0;
+  display: flex;
+  align-items: start;
+}
+
+.steps-visual img {
+  width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+}
+
+.video-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.video-cta .btn-primary {
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+
 .step {
   display: flex;
   flex-direction: column;
@@ -983,6 +1067,7 @@ section {
   position: relative;
   z-index: 1;
   padding: 0 0.5rem;
+  margin-bottom: 100px;
 }
 .step-num {
   width: 56px;
@@ -1028,7 +1113,7 @@ section {
   box-shadow: var(--glow-blue);
 }
 .case-visual {
-  height: 360px;
+  height: auto;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -1060,8 +1145,8 @@ section {
 }
 .case-visualT.image-visualT img {
   width: 100%;
-  height: 455px;
-  object-fit: contain;
+  height: 450px;
+  object-fit: cover;
   object-position: center;
   transition: 0.45s;
   position: relative;
@@ -1070,7 +1155,7 @@ section {
 .case-cardT {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0;
+  gap: 1rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -1078,11 +1163,15 @@ section {
   transition: 0.35s;
 }
 
+.case-card:hover .case-visualT.image-visualT {
+  transform: scale(1.04);
+}
+
 #cases .cases-grid > .case-cardT {
   grid-column: 1 / -1;
 }
 
-.case-card:hover .image-visual img {
+.case-card:hover .image-visual  img {
   transform: scale(1.04);
 }
 .mini-dash {
@@ -1150,6 +1239,7 @@ section {
   color: var(--gray);
   font-size: 0.85rem;
   line-height: 1.6;
+  margin-bottom: 1rem;
 }
 .case-metrics {
   display: flex;
