@@ -69,6 +69,36 @@
     revealElements.forEach((element) => observer.observe(element));
   };
 
+  const initHeroFade = () => {
+    const hero = select('[data-hero-fade]');
+    if (!hero) return;
+
+    // Pequena interação de entrada da Section 1 após o carregamento do HTML.
+    if (prefersReducedMotion) {
+      hero.classList.add('is-visible');
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      hero.classList.add('is-visible');
+    });
+  };
+
+  const initImageFallbacks = () => {
+    selectAll('img[data-fallback-src]').forEach((image) => {
+      image.addEventListener(
+        'error',
+        () => {
+          const fallbackSrc = image.dataset.fallbackSrc;
+          if (!fallbackSrc || image.src.endsWith(fallbackSrc)) return;
+
+          image.src = fallbackSrc;
+        },
+        { once: true },
+      );
+    });
+  };
+
   const initHeaderState = () => {
     const header = select('[data-header]');
     if (!header) return;
@@ -194,6 +224,8 @@
     });
   };
 
+  initHeroFade();
+  initImageFallbacks();
   initRevealAnimations();
   initHeaderState();
   initNavigation();
