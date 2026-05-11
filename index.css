@@ -341,7 +341,7 @@ h1 {
   flex-direction: column;
   gap: 0.6rem;
   font-weight: 600;
-  color: var(--dark);
+  color: var(black);
   width: 100%;
 }
 
@@ -647,6 +647,15 @@ body.modal-open {
   margin-left: 23%;
   margin-bottom: 100px;
 }
+
+@media screen and (max-width: 768px) {
+  .scroll-indicator {
+  margin-left: -13px;
+  display: flex;
+  justify-content: center;
+  }
+}
+
 .scroll-mouse {
   width: 22px;
   height: 34px;
@@ -807,7 +816,8 @@ section {
   font-size: 1rem;
   max-width: 600px;
   line-height: 1.7;
-  
+  margin-top: 0;
+  margin-bottom: 0.75rem;
 }
 
 .section-sub-tree {
@@ -823,8 +833,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
-  align-items: center;
-  margin-top: 1rem;
+  align-items: start;
 }
 
 .services-copy {
@@ -845,6 +854,8 @@ section {
 }
 
 .service-card-content {
+  width: 500px;
+  height: 750px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
@@ -857,9 +868,7 @@ section {
 .service-card-content img {
   width: 100%;
   height: auto;
-
   border-radius: 20px;
- 
 }
 
 @media (max-width: 900px) {
@@ -876,7 +885,6 @@ section {
 .service-card  {
   padding : 0;
   display: grid;
-  gap: 1rem;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -897,7 +905,7 @@ section {
   gap: 1rem;
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .services-grid {
     grid-template-columns: 1fr;
   }
@@ -915,16 +923,24 @@ section {
   justify-self: center;
 }
 
-.service-image {
-  width: 100%;
-  height: 220px;
+.service-image{
+  margin-left: 6rem;
+  width: 500px;
+  height: 100%;
   object-fit: cover;
   border-radius: 12px;
 }
 
+@media screen and (max-width: 768px){
+  .service-image {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+  }
+}
+
 .service-card-content .service-image {
   height: auto;
-  
   width: 400px;
 }
 
@@ -1116,7 +1132,7 @@ section {
 
 .steps-summary {
   display: grid;
-  grid-template-columns: minmax(320px, 1fr) minmax(320px, 460px);
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
   justify-self: space-between;
   margin: 0;
@@ -1133,14 +1149,21 @@ section {
 
 .steps-copy {
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
-.steps-copy h2,
+.steps-copy h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  margin-bottom: 0;
+}
 .steps-copy p {
-  margin: 0;
+  margin-bottom: 0;
+  margin-top: 0;
   display: flex;
   align-items: start;
+  justify-content: start;
 }
 
 .steps-visual img {
@@ -1149,6 +1172,16 @@ section {
   object-fit: cover;
   border-radius: 18px;
   display: block;
+  margin-left: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .steps-visual img {
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .video-cta {
@@ -1237,6 +1270,7 @@ section {
 }
 .case-visual.image-visual img {
   width: 100%;
+  height: auto;
   object-fit: cover;
   object-position: center;
   transition: 0.45s;
@@ -1247,7 +1281,7 @@ section {
 }
 .case-visualT.image-visualT img {
   width: 100%;
-  height: 450px;
+  height: 290px;
   object-fit: cover;
   object-position: center;
   transition: 0.45s;
